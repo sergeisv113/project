@@ -13,7 +13,6 @@
 5) Добавить нумерацию выведенных фильмов */
 
 'use strict';
-
 const movieDB = {
     movies: [
         "Логан",
@@ -23,4 +22,36 @@ const movieDB = {
         "Скотт Пилигрим против..."
     ]
 };
+
+// for (let i = 0; i < movieDB.movies.length; i++) {
+//      movieDB.movies.sort(i);
+// }
+// list[0].replaceWith(movieDB);
+const poster = document.querySelector('.promo__bg'),
+    adv = document.querySelectorAll('.promo__adv img'),
+    genre = poster.querySelector('.promo__genre'),
+    movieList = document.querySelector('.promo__interactive-list')
+/*adv.forEach(item => {
+    item.remove();
+});*/
+adv.forEach(function (item) {
+    item.remove();
+});
+genre.textContent = 'Драмма';
+poster.style.backgroundImage = 'url("img/bg.jpg")';
+movieList.innerHTML = '';
+movieDB.movies.sort();
+movieDB.movies.forEach((film, i) => {
+    movieList.innerHTML += `
+     <li class="promo__interactive-item">${i + 1} ${film}
+                            <div class="delete"></div>
+                        </li>
+    `;
+})
+
+
+
+
+
+
 
